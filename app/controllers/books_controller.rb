@@ -20,6 +20,12 @@ class BooksController < ApplicationController
         if params[:max_page_count].present?
           @books = @books.where('page_count <= ?', params[:max_page_count])
         end
+        if params[:created_at].present?
+          @books = @books.where('created_at = ?', params[:created_at])
+        end
+        if params[:updated_at].present?
+          @books = @books.where('updated_at = ?', params[:updated_at])
+        end
       @books = @books.order(created_at: :desc)
   end
 

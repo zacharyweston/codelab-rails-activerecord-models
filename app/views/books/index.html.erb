@@ -42,5 +42,7 @@
   <h3>Pages</h3>
   <%= number_field_tag :min_page_count, params[:min_page_count], placeholder: 'Minimum' %>
   <%= number_field_tag :max_page_count, params[:max_page_count], placeholder: 'Maximum'  %>
+  <%= text_field_tag :created_at, params[:created_at], placeholder: 'Date Created' %>
+  <%= text_field_tag :updated_at, params[:updated_at], placeholder: 'Date Updated' %>
   <%= button_tag "Search" %>
 <% end %>
