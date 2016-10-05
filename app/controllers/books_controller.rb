@@ -21,13 +21,17 @@ class BooksController < ApplicationController
           @books = @books.where('page_count <= ?', params[:max_page_count])
         end
         if params[:created_at].present?
-          @books = @books.where('created_at = ?', params[:created_at])
+          searched_date = Date.parse(params[:created_at])
+          @books = Book.where(:created_at => searched_date.beginning_of_day..searched_date.end_of_day)
         end
         if params[:updated_at].present?
-          @books = @books.where('updated_at = ?', params[:updated_at])
+          searched_updated_date = Date.parse(params[:updated_at])
+          @books = Book.where(:updated_at => searched_updated_date.beginning_of_day..searched_updated_date.end_of_day)
         end
       @books = @books.order(created_at: :desc)
   end
+
+
 
   # GET /books/1
   # GET /books/1.json
